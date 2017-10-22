@@ -1,0 +1,39 @@
+// tempfun.m -- see how different temp file names are generated
+
+/* compile with:
+cc -g -Wall -o tempfun tempfun.m
+*/
+
+#import <stdlib.h>      // for EXIT_SUCCESS, etc
+#import <stdio.h>       // for the temp name functions
+#import <unistd.h>      // for mk[s]temp
+#import <string.h>      // for strcpy()
+
+int main (int argc, char *argv[])
+{
+    char *name;
+    char buffer[1024];
+
+    printf ("my process ID is %d\n", getpid());
+
+    name = tmpnam (NULL); 
+    printf ("tmpnam(NULL) is '%s'\n", name);
+
+    name = tmpnam (buffer);
+    printf ("tmpnam(buffer) is '%s'\n", buffer);
+
+    name = tempnam ("/System/Library", "my_prefix");
+    printf ("tempnam(/System/Library, my_prefix) is '%s'\n", name);
+    free (name);
+
+    name = tempnam ("/does/not/exist", "my_prefix");
+    printf ("tempnam(/does/not/exist, my_prefix) is '%s'\n", name);
+    free (name);
+
+    strcpy (buffer, "templateXXXXXX");
+    name = mktemp (buffer);
+    printf ("mktemp(templateXXXXXX) is '%s'\n", name);
+
+    return (0);
+
+} // main

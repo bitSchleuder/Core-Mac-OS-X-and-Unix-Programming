@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {refreshImage = id; }; 
+            CLASS = MandelbrotView; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {progressTextField = NSTextField; refreshButton = NSButton; }; 
+            SUPERCLASS = NSView; 
+        }
+    ); 
+    IBVersion = 1; 
+}

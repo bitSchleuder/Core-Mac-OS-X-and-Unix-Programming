@@ -1,0 +1,181 @@
+exec-file mallocguard
+;
+quit
+run
+quit
+break reverseIt 
+run bargle
+print argv[1]
+list
+quit
+break main
+break reverseIt 
+run
+continue 
+run bargle
+n
+print stringbuffer 
+print *stringbuffer 
+n
+print *stringbuffer 
+print argv[1] 
+n
+print *stringbuffer 
+print *stringbuffer[1] 
+print stringbuffer[1] 
+print stringbuffer[2] 
+print stringbuffer[] 
+list
+n
+list
+n
+n
+print scan
+print stringbuffer 
+print stop
+n
+print stop
+set var stop = stringbuffer + strlen(stringbuffer)
+set var stop = (char *) stringbuffer + strlen(stringbuffer)
+set var stop = (void *) stringbuffer + (int)strlen(stringbuffer)
+print stop
+set var stop = (void *) stringbuffer + (int)strlen(stringbuffer)-1
+print stop
+set var stop = (void *) stringbuffer + (int)strlen(stringbuffer)
+n
+n
+n
+n
+n
+n
+print scan
+print stop
+print sizeof(CharNode )
+print sizeof(head)
+shell cc -g -o memerror memerror.m 
+where
+list
+break memerror.m:36 
+info breakpoints 
+disable 1
+disable 2
+info breakpoints 
+shell cc -g -o memerror memerror.m 
+run
+n
+print head
+n
+n
+n
+n
+stop
+clear 
+info breakpoints 
+run bargle
+n
+n
+n
+n
+n
+print *head
+n
+print scan
+n
+n
+print node
+n
+print *node
+print *head
+print *head-next
+print *head->next
+n
+dis 3
+until
+until
+until
+n
+n
+n
+dis 3
+until
+print *head
+print *head->next
+print *head->next
+print *head->next->next
+print *head->next->next->next
+print *head->next->next->next->next
+print *head->next->next->next->next->next
+print *head->next->next->next->next->next->next
+print *head->next->next->next->next->next->next->next
+n
+n
+n
+n
+print head
+shell cc -g -o memerror memerror.m 
+run
+info breakpoints 
+break memerror.m:54
+run bargle
+n
+n
+n
+n
+n
+print head
+print *head
+info breakpoints 
+dis 4
+until
+print stringbuffer;
+print stringbuffer
+print (char *)(stringbuffer+1)
+quit
+run bargle
+stack
+where
+quit
+run bargle
+where
+frame 4
+print stringbuffer 
+quit
+run bargle
+where
+print argc
+break main
+run
+n
+print argc
+print argv[1]
+until
+until
+continue
+where
+frame 4
+print argc
+print stringbuffer
+quit
+run bargle
+where
+frame 4
+print stringbuffer 
+quit
+run bargle
+info breakpoints 
+break memerror.m:87
+run
+print stringbuffer 
+print *stringbuffer 
+quit
+break main
+run bargle
+disassemble 
+info registers 
+whatis argc
+whatis argv
+whatis stringbugffer
+whatis stringbuffer 
+whatis head
+whatis node
+quit

@@ -1,0 +1,19 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {sendMessage = id; subscribe = id; unsubscribe = id; }; 
+            CLASS = AppController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                hostField = NSTextField; 
+                messageField = NSTextField; 
+                nicknameField = NSTextField; 
+                proxy = id; 
+                textView = NSTextView; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

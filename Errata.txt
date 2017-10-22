@@ -1,0 +1,103 @@
+2. A C Refresher, Part 1: The Basics
+
+Page 17 
+
+myShort was not declared. It should be an unsigned short.
+
+4. The Compiler
+
+Page 68 
+
+In the compile-line comment in multilineMacro.m, the -i flag should be a -o flag.
+
+
+Page 77 
+
+The packed structure indicator has an extra underscore in it. It also has extra underscores after it. It should be __attribute((packed))
+
+5. Libraries
+
+Page 79 
+
+The instructions for making the source files for the library samples aren't clear. You should create (or download) files named src0.c, src1.c, src2.c, src3.c, and src4.c. Inside of those files is a function named like the file, like add_0, add_1, add_2, add_3, and add_4.
+
+6. Command Line Programs
+
+Page 112 
+
+Panther has adopted getopt_long() from the GNU project. It is similar to getopt, but allows you to use the long argument names, such as something like
+% ./build-hut --type=yurt --height=12
+
+8. Debugging With GDB
+
+Page 164 
+
+The rebuilding command should be
+% cc -g -i memerror memerror.m
+
+Otherwise debugging symbols won't be included (which makes subsequent debugging steps more difficult)
+
+9. Exceptions, Error Handling, and Signals
+
+Pages 194 - 198 
+
+Objective-C now has first-class exception handling. Documentation at Apple.
+
+12. NSFileManager
+
+Page 274 
+
+In the -components method, the @"" string should be @"/" to represent the root of the filesystem.
+
+13. Network Programming With Sockets
+
+Page 305 
+
+In the readMessage function, the loop that looks for complete messages has a signed/unsigned error in it. The line of code that reads
+user->currentMessageSize = *scan++;
+should read
+user->currentMessageSize = (unsigned char)*scan++; 
+Otherwise, messages over 126 bytes in length cause the server to stop sending messages. (Thanks to Randy Antler for finding and fixing this one)
+
+14. CFRunLoop
+
+Page 335 
+
+Towards the end of -consoleUser, the appendString needs a colon:
+
+[consoleUser appendString:[consoleUserDict objectForKey: @"Name"]];
+
+16. Using NSTask
+
+Page 375 
+
+There is an instruction "Open MainMenu.nib and drag AppController.h to it." This is unnecessary because you created all the actions and outlets in Interface Builder. You can do this step or skip it. It has no effect.
+
+20. Rendezvous
+
+Page 437 
+
+
+The line that says:
+[aNetService resolve];
+
+On a large network, resolving every server found can create a lot of unnecessary network traffic.
+
+A better solution would be to move resolving to the subscribe: method:
+currentService = [services objectAtIndex:
+                                  [hostField indexOfSelectedItem]];
+[currentService resolve];
+
+Then the rest of the method should be in the delegate's call back:
+- (void)netServiceDidResolveAddress:(NSNetService *)sender
+(Thanks to Jeremy Wyld for this suggestion.)
+
+21. Directory Services
+
+Page 455 
+
+In DoNodeNativeAuth() sample, the declaration
+tContextData aContinueData;
+should be
+tContextData aContinueData = NULL
+. Without the initialization, you'll get error code = -14097 (invalid continuation data)
